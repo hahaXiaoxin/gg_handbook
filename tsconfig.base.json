@@ -18,7 +18,6 @@
       "forceConsistentCasingInFileNames": true,  // 强制文件名大小写一致性
       "resolveJsonModule": true, // 允许导入 JSON 文件
       "isolatedModules": true,   // 确保每个文件都可以单独编译
-      "noEmit": true,           // 不输出编译后的文件（通常由打包工具处理）
       
       // JSX 支持
       "jsx": "preserve",         // 保留 JSX 语法，不做转换（通常由其他工具如 Babel 处理）
