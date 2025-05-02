@@ -3,18 +3,23 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config webpack.config.ts",
-    "dev": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config webpack.config.ts --watch",
-    "server": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack-dev-server --config webpack.config.ts"
+    "build": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config build/webpack.config.ts",
+    "dev": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config build/webpack.config.ts --watch",
+    "server": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack-dev-server --config build/webpack.config.ts",
+    "build:vue": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config build/webpack.vue.config.ts"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.32",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.15.3",
+    "@types/vue": "^2.0.0",
+    "@vue/compiler-sfc": "^3.5.13",
+    "@vue/runtime-dom": "^3.5.13",
     "copy-webpack-plugin": "^13.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
+    "ejs-loader": "^0.5.0",
     "flexslider": "^2.7.2",
     "html-webpack-plugin": "^5.6.3",
     "jquery": "^3.7.1",
@@ -24,11 +29,14 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
+    "vue-loader": "15.9.8",
+    "vue-template-compiler": "^2.7.16",
     "webpack": "^5.99.7",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "vue": "2"
   }
 }

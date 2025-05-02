@@ -5,15 +5,8 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserWebpackPlugin from 'terser-webpack-plugin';
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
+import { getEntryPath, getTemplatePath } from './common';
 import 'webpack-dev-server';
-
-function getEntryPath(pageName: string) {
-    return path.resolve(__dirname, `src/pages/${pageName}/index.ts`);
-}
-
-function getTemplatePath(pageName: string) {
-    return path.resolve(__dirname, `src/pages/${pageName}/index.html`);
-}
 
 const config: Configuration = {
     mode: 'development',
@@ -23,12 +16,12 @@ const config: Configuration = {
     },
     output: {
         filename: 'js/[name].js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(process.cwd(), 'dist'),
         clean: true
     },
     devServer:{
         static: {
-            directory: path.join(__dirname, 'dist'),
+            directory: path.join(process.cwd(), 'dist'),
         },
         compress: true, // 是否开启压缩
         port: 8080, // 端口号
@@ -56,6 +49,15 @@ const config: Configuration = {
                     }
                 }
             },
+            {
+                test: /\.ejs$/,
+                use: [{
+                    loader: 'ejs-loader',
+                    options: {
+                        esModule: false
+                    }
+                }]
+            }
         ],
     },
     resolve: {
@@ -74,8 +76,8 @@ const config: Configuration = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, 'src/img'),
-                    to: path.resolve(__dirname, 'dist/img'),
+                    from: path.resolve(process.cwd(), 'src/img'),
+                    to: path.resolve(process.cwd(), 'dist/img'),
                 }
             ]
         }),
