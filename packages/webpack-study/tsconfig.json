@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "outDir": "dist"
+    "outDir": "dist",
+    "allowJs": true
   },
   "exclude": ["node_modules", "dist"]
 } 

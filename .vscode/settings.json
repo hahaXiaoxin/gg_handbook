@@ -1,3 +1,4 @@
 {
-  "json.schemas": []
+  "json.schemas": [],
+  "liveServer.settings.root": "packages/webpack-study/dist",
 } 

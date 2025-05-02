@@ -4,15 +4,31 @@
   "private": true,
   "scripts": {
     "build": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config webpack.config.ts",
-    "dev": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config webpack.config.ts --watch"
+    "dev": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config webpack.config.ts --watch",
+    "server": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack-dev-server --config webpack.config.ts"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.15.3",
+    "copy-webpack-plugin": "^13.0.0",
     "cross-env": "^7.0.3",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "flexslider": "^2.7.2",
+    "html-webpack-plugin": "^5.6.3",
+    "jquery": "^3.7.1",
+    "mini-css-extract-plugin": "^2.9.2",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.14",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "webpack": "^5.99.7",
-    "webpack-cli": "^6.0.1"
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
   }
 }
