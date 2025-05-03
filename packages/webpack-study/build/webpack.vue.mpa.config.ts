@@ -6,7 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserWebpackPlugin from 'terser-webpack-plugin';
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
 import 'webpack-dev-server';
-import VueLoaderPlugin from 'vue-loader/lib/plugin';
+import {VueLoaderPlugin} from 'vue-loader';
 import { getEntryPathForVueMpa } from './common';
 
 const config: Configuration = {

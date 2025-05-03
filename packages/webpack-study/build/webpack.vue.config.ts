@@ -6,12 +6,12 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserWebpackPlugin from 'terser-webpack-plugin';
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
 import 'webpack-dev-server';
-import VueLoaderPlugin from 'vue-loader/lib/plugin';
+import {VueLoaderPlugin} from 'vue-loader';
 
 const config: Configuration = {
     mode: 'development',
     entry: {
-        main: path.resolve(process.cwd(), 'src/main.ts'),
+        index: path.resolve(process.cwd(), 'src/main.ts'),
     },
     output: {
         filename: 'js/[name].js',
@@ -64,7 +64,7 @@ const config: Configuration = {
         new HtmlWebpackPlugin({
             template: path.resolve(process.cwd(), 'public/index.html'),
             filename: 'index.html',
-            chunks: ['main'],
+            chunks: ['index'],
         }),
         new ProvidePlugin({
             $: 'jquery',

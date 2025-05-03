@@ -24,5 +24,5 @@
 用例：
 
 - 运行pnpm run build可将原生应用进行打包
-- 运行pnpm run build:vue是原生应用转换为vue2的打包
+- 运行pnpm run build:vue是原生应用转换为vue的打包
 - 运行pnpm run build:vue:mpa可以生成多页面应用

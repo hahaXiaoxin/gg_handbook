@@ -423,30 +423,21 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, getCurrentInstance } from 'vue';
-import '../../js/public.js'; 
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import '../../js/public.js';
 import { init } from '../../js/nav.js';
 import '../../js/jquery.flexslider-min.js';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
-export default defineComponent({
-    name: 'Home',
-    setup() { 
-        const instance = getCurrentInstance()!;
+onMounted(() => {
+    init();
+})
 
-        onMounted(() => {
-            init();
-        })
-
-        function toLogin() {
-            instance.proxy.$router.push('/login');
-        }
-
-        return {
-            toLogin
-        }
-     },
-});
+function toLogin() {
+    router.push('/login');
+}
 </script>
 
 <style scoped>

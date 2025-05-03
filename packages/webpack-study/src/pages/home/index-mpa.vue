@@ -423,21 +423,15 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted } from 'vue';
-import '../../js/public.js'; 
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import '../../js/public.js';
 import { init } from '../../js/nav.js';
 import '../../js/jquery.flexslider-min.js';
 
-export default defineComponent({
-    name: 'Home',
-    setup() { 
-
-        onMounted(() => {
-            init();
-        })
-     },
-});
+onMounted(() => {
+    init();
+})
 </script>
 
 <style scoped>
