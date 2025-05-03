@@ -6,7 +6,9 @@
     "build": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config build/webpack.config.ts",
     "dev": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config build/webpack.config.ts --watch",
     "server": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack-dev-server --config build/webpack.config.ts",
-    "build:vue": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config build/webpack.vue.config.ts"
+    "server:vue": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack-dev-server --config build/webpack.vue.config.ts",
+    "build:vue": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config build/webpack.vue.config.ts",
+    "build:vue:mpa": "TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config build/webpack.vue.mpa.config.ts"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.32",
@@ -37,6 +39,7 @@
   },
   "dependencies": {
     "lodash-es": "^4.17.21",
-    "vue": "2"
+    "vue": "2",
+    "vue-router": "^3.6.5"
   }
 }

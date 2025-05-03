@@ -7,11 +7,13 @@ import TerserWebpackPlugin from 'terser-webpack-plugin';
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
 import 'webpack-dev-server';
 import VueLoaderPlugin from 'vue-loader/lib/plugin';
+import { getEntryPathForVueMpa } from './common';
 
 const config: Configuration = {
     mode: 'development',
     entry: {
-        main: path.resolve(process.cwd(), 'src/main.ts'),
+        home: getEntryPathForVueMpa('home'),
+        login: getEntryPathForVueMpa('login'),
     },
     output: {
         filename: 'js/[name].js',
@@ -63,8 +65,13 @@ const config: Configuration = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(process.cwd(), 'public/index.html'),
-            filename: 'index.html',
-            chunks: ['main'],
+            filename: 'home.html',
+            chunks: ['home'],
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(process.cwd(), 'public/index.html'),
+            filename: 'login.html',
+            chunks: ['login'],
         }),
         new ProvidePlugin({
             $: 'jquery',

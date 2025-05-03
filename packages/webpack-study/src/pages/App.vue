@@ -1,24 +1,20 @@
 <template>
-  <div>
-    <h1>{{ a }}</h1>
-    <input type="text" v-model="a">
-  </div>
+    <router-view />
 </template>
 
 <script lang="ts">
-import { ref,defineComponent } from 'vue'
+import { ref, defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'App',
-  setup() {
-    const a = ref('123');
-    
-    return {
-      a
-    }
-  }
-})
+    name: 'App',
+    setup(props, context) {
+        const a = ref('123');
+
+        return {
+            a,
+        };
+    },
+});
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

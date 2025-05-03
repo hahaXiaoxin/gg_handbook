@@ -17,3 +17,7 @@ export function getEntryPath(pageName: string) {
 export function getTemplatePath(pageName: string) {
     return path.resolve(process.cwd(), `src/pages/${pageName}/index.html`);
 }
+
+export function getEntryPathForVueMpa(pageName: string) {
+    return path.resolve(process.cwd(), `src/mpa/${pageName}.ts`);
+}
