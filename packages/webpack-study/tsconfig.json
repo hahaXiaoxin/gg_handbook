@@ -6,10 +6,7 @@
     "allowJs": true,
     "jsx": "preserve",
     "typeRoots": ["./node_modules/@types", "./src/types"],
-    "types": ["webpack-env"],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "types": ["webpack-env"]
   },
   "include": [
     "src/**/*.ts",
