@@ -180,6 +180,8 @@ export default {
 }
 ```
 
+
+
 ## 如何实现TreeShaking
 
 四个要点
@@ -188,3 +190,12 @@ export default {
 2. 其中的模块必须是export的形式导出，而不能是export default
 3. webpack中的mode必须为production
 4. 引入时通过`import {xxx} from '[module]'的形式`
+
+
+
+## 通过预先打包优化构建速度
+
+
+
+## webpack4与webpack5的区别
+
