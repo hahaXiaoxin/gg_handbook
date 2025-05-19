@@ -1,0 +1,19 @@
+{
+  "name": "@gg-handbook/gg_cli",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "dev": "ts-node-dev --respawn src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "ts-node-dev": "^2.0.0"
+  },
+  "bin": {
+    "gg_ls": "./bin/ls.js"
+  }
+}
