@@ -1,0 +1,28 @@
+{
+  "name": "@gg-handbook/webpack-study",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:main": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --config main/webpack.config.ts",
+    "build:sub": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack --config subModule/webpack.config.ts",
+    "dev:main": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack-dev-server --config main/webpack.config.ts",
+    "dev:sub": "cross-env TS_NODE_PROJECT=tsconfig.webpack.json webpack-dev-server --config subModule/webpack.config.ts"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.15.3",
+    "@types/vue": "^2.0.0",
+    "@types/webpack-env": "^1.18.8",
+    "@vue/compiler-sfc": "^3.5.13",
+    "@vue/runtime-dom": "^3.5.13",
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^5.6.3",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  }
+}
