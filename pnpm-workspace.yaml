@@ -1,2 +1,5 @@
 packages:
-  - 'packages/*' 
+  - packages/*
+
+overrides:
+  '@gg-handbook/gg_cli': link:packages/gg_cli
