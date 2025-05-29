@@ -14,22 +14,60 @@ function parseArgs(args) {
     });
     return { isList, isAll };
 }
+function isDir(mode) {
+    return (mode & node_fs_1.default.constants.S_IFDIR) === node_fs_1.default.constants.S_IFDIR;
+}
+function isFile(mode) {
+    return (mode & node_fs_1.default.constants.S_IFREG) === node_fs_1.default.constants.S_IFREG;
+}
+function getFileMode(mode) {
+    if (isDir(mode)) {
+        return 'd';
+    }
+    if (isFile(mode)) {
+        return '-';
+    }
+    return '?';
+}
 function main() {
     const args = process.argv.slice(2);
     const { isList, isAll } = parseArgs(args);
-    const files = node_fs_1.default.readdirSync('.', { withFileTypes: true });
-    if (!isList && !isAll) {
-        const res = files.filter(file => !file.name.startsWith('.')).reduce((pre, file) => {
-            return pre + file.name + '\t';
-        }, '');
-        console.log(res);
-        return;
+    const files = node_fs_1.default.readdirSync('.').map(file => ({
+        name: file,
+        type: '-'
+    }));
+    let filterFiles = files;
+    if (!isAll) {
+        filterFiles = filterFiles.filter(file => !file.name.startsWith('.'));
     }
-    else if (isAll && !isList) {
-        const res = files.reduce((pre, file) => {
-            return pre + file.name + '\t';
-        }, '.\t..\t');
-        console.log(res);
+    if (isList) {
+        filterFiles = filterFiles.map(fileInfo => {
+            const stats = node_fs_1.default.statSync(fileInfo.name);
+            const { mode } = stats;
+            return {
+                ...fileInfo,
+                type: getFileMode(mode)
+            };
+        });
     }
+    let output = '';
+    if (!isList) {
+        for (let i = 0; i < filterFiles.length; i++) {
+            const file = filterFiles[i];
+            output += file.name + '\t';
+        }
+    }
+    else {
+        for (let i = 0; i < filterFiles.length; i++) {
+            const file = filterFiles[i];
+            if (i === filterFiles.length - 1) {
+                output += file.name;
+            }
+            else {
+                output += file.name + '\n';
+            }
+        }
+    }
+    console.log(output);
 }
 main();
