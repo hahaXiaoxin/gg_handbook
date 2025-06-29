@@ -10,8 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-    'prettier'
+    'plugin:react-hooks/recommended'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -28,8 +27,7 @@ module.exports = {
     'react',
     'react-hooks',
     'react-refresh',
-    '@typescript-eslint',
-    'prettier'
+    '@typescript-eslint'
   ],
   settings: {
     react: {
@@ -58,6 +56,7 @@ module.exports = {
     
     // 通用规则
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'prettier/prettier': 'warn',
+    'linebreak-style': 'off',
+    "indent": ["error", 4]
   },
 }; 

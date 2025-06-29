@@ -1,10 +1,11 @@
-import { createBrowserRouter, matchPath, RouteObject } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import { HomeOutlined } from "@ant-design/icons";
-import React from "react";
-import { MenuProps } from "antd";
+import { createBrowserRouter, matchPath, RouteObject } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import { HomeOutlined, CalendarOutlined } from '@ant-design/icons';
+import React from 'react';
+import { MenuProps } from 'antd';
+import Schedule from './pages/Schedule';
 
 /**
  * 自定义接口类型
@@ -18,32 +19,39 @@ export type IRouteObject = RouteObject & {
 
 export const routerList: IRouteObject[] = [
     {
-        path: "/",
+        path: '/',
         element: <Layout />,
         children: [
             {
                 index: true,
                 element: <Home />,
-                label: "首页",
+                label: '首页',
                 icon: <HomeOutlined />,
-                menu: true
+                menu: true,
             },
             {
-                path: "*",
+                path: 'schedule',
+                element: <Schedule />,
+                label: '日历',
+                icon: <CalendarOutlined />,
+                menu: true,
+            },
+            {
+                path: '*',
                 element: <NotFound />,
-                menu: true
+                menu: true,
             },
         ],
-        menu: true
-    }
+        menu: true,
+    },
 ];
 
 // 导航菜单项
-export const navItems: MenuProps["items"] =
+export const navItems: MenuProps['items'] =
     (routerList[0].children as IRouteObject[])
-        ?.filter((route) => route.menu && route.path !== "*")
-        .map((route) => ({
-            key: route.path ? `/${route.path}` : "/",
+        ?.filter(route => route.menu && route.path !== '*')
+        .map(route => ({
+            key: route.path ? `/${route.path}` : '/',
             label: route.label,
             icon: route.icon,
         })) || [];
@@ -51,14 +59,14 @@ export const navItems: MenuProps["items"] =
 // 根据路径查找路由配置
 export const findRouteByPath = (path: string): IRouteObject | null => {
     // 处理根路径
-    if (path === "/") {
-        const homeRoute = routerList[0].children?.find((route) => route.index);
+    if (path === '/') {
+        const homeRoute = routerList[0].children?.find(route => route.index);
         return homeRoute || null;
     }
 
     // 处理其他路径
     return (
-        routerList[0].children?.find((route) => {
+        routerList[0].children?.find(route => {
             if (!route.path) return false;
             return matchPath(`/${route.path}`, path);
         }) || null
