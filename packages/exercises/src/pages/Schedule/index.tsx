@@ -148,7 +148,6 @@ const Schedule: React.FC = () => {
                     ? [startDate.current.date, dayInstance.date]
                     : [dayInstance.date, startDate.current.date];
 
-                console.log("结束日程", dayInstance.date.format("YYYY-MM-DD"));
                 handleCreateSchedule(start, end, `日程${scheduleKey.current++}`);
             }
         },
