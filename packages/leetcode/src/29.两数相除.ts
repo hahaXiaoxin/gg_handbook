@@ -6,8 +6,8 @@
 
 // @lc code=start
 
-const MAX_INT = Math.pow(2, 31) - 1;
-const MIN_INT = Math.pow(2, 31) * -1;
+const MAX_INT = 2147483647;
+const MIN_INT = -2147483648;
 
 function divide(dividend: number, divisor: number): number {
     // 得到单位的位次，即10^unit
