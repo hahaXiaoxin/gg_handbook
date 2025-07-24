@@ -195,6 +195,35 @@ export default {
 
 ## 通过预先打包优化构建速度
 
+通过对一些第三方库以及改动频率低的库提前打包，然后在入口html文件中引用，可以减少应用打包的时间。
+
+1. 首先将第三方库打包成dll文件存放在public目录下，并且生成对应的映射文件`xxx.manifest.json`
+
+    ```ts
+    // 专门打包dll的webpack.config.ts
+    new DllPlugin({
+      name: '[name]_dll_lib',
+      path: path.resolve(process.cwd(), 'public/dll/[name].manifest.json'),
+    }),
+    ```
+
+2. 在index.html中引入对应的dll文件
+
+3. 在打包时引入插件，指向对应的映射文件，该插件会将代码中对对应模块的引用通过映射表的内容进行替换从而通过减少打包内容来提高打包速度
+
+    ```ts
+    // 添加DllReferencePlugin引用预先打包的库
+    new DllReferencePlugin({
+        manifest: path.resolve(process.cwd(), 'public/dll/vendor.manifest.json'),
+    }),
+    ```
+
+
+
+尝试引入和不引入dll插件对打包速率的提升：15s -> 4s
+
+## 通过缓存已打包的内容优化构建速度
+
 
 
 ## webpack4与webpack5的区别

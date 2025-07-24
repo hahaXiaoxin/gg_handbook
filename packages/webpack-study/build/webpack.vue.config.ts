@@ -1,4 +1,4 @@
-import { Configuration, ProvidePlugin } from 'webpack';
+import { Configuration, DllReferencePlugin, ProvidePlugin } from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
@@ -6,12 +6,22 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserWebpackPlugin from 'terser-webpack-plugin';
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin';
 import 'webpack-dev-server';
-import {VueLoaderPlugin} from 'vue-loader';
+import { VueLoaderPlugin } from 'vue-loader';
 
 const config: Configuration = {
     mode: 'development',
     entry: {
         index: path.resolve(process.cwd(), 'src/main.ts'),
+    },
+    cache: {
+        type: 'filesystem',
+        version: '1.0', // 自定义缓存版本标识
+        cacheDirectory: path.resolve(__dirname, '.temp_cache'),
+        store: 'pack', // 如何存储缓存 ('pack' | 'idle')
+        buildDependencies: {
+          // 当这些依赖发生变化时，缓存将失效
+          config: [__filename], // 构建依赖的配置文件
+        },
     },
     output: {
         filename: 'js/[name].js',
@@ -82,6 +92,10 @@ const config: Configuration = {
             filename: 'css/[name].css',
         }),
         new VueLoaderPlugin(),
+        // 添加DllReferencePlugin引用预先打包的库
+        new DllReferencePlugin({
+            manifest: path.resolve(process.cwd(), 'public/dll/vendor.manifest.json'),
+        }),
     ],
     optimization: {
         minimize: true,
