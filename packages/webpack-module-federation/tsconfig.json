@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "outDir": "dist",
+    "allowJs": true,
+    "jsx": "preserve",
+    "typeRoots": ["./node_modules/@types", "./types"]
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.d.ts",
+  ],
+  "exclude": ["node_modules", "dist"]
+} 

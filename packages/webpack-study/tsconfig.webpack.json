@@ -11,5 +11,5 @@
       "module": "CommonJS"
     }
   },
-  "include": ["webpack.config.ts"]
+  "include": ["build/**/*.ts"]
 } 

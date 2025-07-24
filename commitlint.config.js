@@ -5,6 +5,7 @@ module.exports = {
       2,
       'always',
       [
+        'merge',    // 合并
         'feat',     // 新功能
         'fix',      // 修复
         'docs',     // 文档变更
