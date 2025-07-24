@@ -2,10 +2,11 @@ import { createBrowserRouter, matchPath, RouteObject } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import { HomeOutlined, CalendarOutlined } from '@ant-design/icons';
+import { HomeOutlined, CalendarOutlined, FileOutlined } from '@ant-design/icons';
 import React from 'react';
 import { MenuProps } from 'antd';
 import Schedule from './pages/Schedule';
+import OperationRecord from './pages/OperationRecord';
 
 /**
  * 自定义接口类型
@@ -34,6 +35,13 @@ export const routerList: IRouteObject[] = [
                 element: <Schedule />,
                 label: '日历',
                 icon: <CalendarOutlined />,
+                menu: true,
+            },
+            {
+                path: 'operation-record',
+                element: <OperationRecord />,
+                label: '操作记录',
+                icon: <FileOutlined />,
                 menu: true,
             },
             {
