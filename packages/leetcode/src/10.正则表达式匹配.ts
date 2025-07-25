@@ -12,7 +12,7 @@
  * @param p 正则表达式模式
  * @returns [字符串长度, 模式长度, dp数组]
  */
-const init = (s: string, p: string) => {
+function init(s: string, p: string) {
     const sLength = s.length;
     const pLength = p.length;
     // 创建 dp 数组，dp[i][j] 表示 s 的前 i 个字符与 p 的前 j 个字符是否匹配
@@ -76,73 +76,15 @@ function dp(s: string, p: string): boolean {
 };
 
 /**
- * 递归解法 - 深度优先搜索
- * @param s 待匹配的字符串
- * @param p 正则表达式模式
- * @returns 是否匹配
- */
-function dfs(s: string, p: string, memo: Map<string, boolean> = new Map()): boolean {
-    // 创建唯一的缓存键
-    const key = `${s}:${p}`;
-
-    // 如果已经计算过，直接返回结果
-    if (memo.has(key)) {
-        return memo.get(key)!;
-    }
-
-    let sChar = s[0]; // 当前字符串的首字符
-    const pChar = p[0]; // 当前模式的首字符
-
-    // 基础情况：当字符串和模式都为空时，匹配成功
-    if (!pChar && !sChar) {
-        memo.set(key, true);
-        return true;
-    }
-
-    // 检查模式中下一个字符是否为 *
-    const hasStarNext = p[1] === '*';
-
-    // 如果下一个字符不是 *，进行普通匹配
-    if (!hasStarNext) {
-        // 字符串不为空且当前字符匹配（相等或为点号），继续递归检查剩余部分
-        const result = Boolean(sChar) && (sChar === pChar || pChar === '.') && dfs(s.slice(1), p.slice(1));
-        memo.set(key, result);
-        return result;
-    }
-    
-    // 下一个字符是 *，尝试不同匹配次数
-    let i = 0;
-
-    do {
-        // 尝试跳过 "字符+*" 组合或匹配多次
-        const flag = dfs(s.slice(i), p.slice(2));
-
-        // 如果找到匹配，直接返回 true
-        if (flag) {
-            memo.set(key, true);
-            return true;
-        }
-
-        // 尝试多匹配一个字符
-        sChar = s[i++];
-    } while(sChar && (sChar === pChar || pChar === '.'))
-
-    // 所有可能性都不匹配
-    memo.set(key, false);
-    return false;
-}
-
-/**
  * 主函数：判断字符串是否匹配正则表达式
  * @param s 待匹配的字符串
  * @param p 正则表达式模式
  * @returns 是否匹配
  */
 function isMatch(s: string, p: string): boolean {
-    // 可以选择使用递归解法或动态规划解法
-    return dfs(s, p);  // 递归解法（已注释）
-
-    // return dp(s, p);  // 动态规划解法（当前使用）
+    return dp(s, p);  // 动态规划解法（当前使用）
 }
 // @lc code=end
+
+export { isMatch };
 
