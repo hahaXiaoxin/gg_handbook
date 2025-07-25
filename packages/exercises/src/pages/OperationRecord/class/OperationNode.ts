@@ -285,9 +285,11 @@ export class MoveNode extends OperationNodeBase {
 
         const toNode = TreeNode.treeNodeMap.get(this._toNodeId)!;
 
+        const moveNode = fromNode.children[this._fromIndex];
+
         fromNode.removeChild(this._fromIndex);
 
-        toNode.addChild(fromNode, this._toIndex);
+        toNode.addChild(moveNode, this._toIndex);
     }
 
     public revert() {
@@ -295,8 +297,11 @@ export class MoveNode extends OperationNodeBase {
 
         const toNode = TreeNode.treeNodeMap.get(this._toNodeId)!;
 
+        const moveNode = toNode.children[this._toIndex];
+
+        // 操作与excute相反即可
         toNode.removeChild(this._toIndex);
 
-        fromNode.addChild(toNode, this._fromIndex);
+        fromNode.addChild(moveNode, this._fromIndex);
     }
 }

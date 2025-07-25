@@ -153,6 +153,8 @@ const OperationRecord: React.FC = () => {
     const onDrop = useCallback<NonNullable<TreeProps["onDrop"]>>((info) => {
         // 被移动的节点
         const dragNodeId = info.dragNode.key as number;
+
+        // 被移动的节点的父节点
         const fromNode = TreeNode.treeNodeMap.get(dragNodeId)!.parent!;
 
         // 前一个节点
@@ -235,6 +237,10 @@ const OperationRecord: React.FC = () => {
                         );
                     }}
                 />
+            </div>
+
+            <div style={{ marginTop: 10, whiteSpace: 'pre-wrap' }}>
+                {JSON.stringify(treeData, null, 2)}
             </div>
         </div>
     );
