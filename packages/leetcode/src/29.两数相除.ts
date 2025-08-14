@@ -10,7 +10,6 @@ const MAX_INT = 2147483647;
 const MIN_INT = -2147483648;
 
 function divide(dividend: number, divisor: number): number {
-    // 得到单位的位次，即10^unit
     const flag = dividend < 0 && divisor < 0 || dividend >= 0 && divisor >= 0;
 
     const dividendArr = Math.abs(dividend).toString().split('');
@@ -31,7 +30,7 @@ function divide(dividend: number, divisor: number): number {
             count++;
         }
 
-        result = Number(result.toString() + count.toString());
+        result = result * 10 + count;
 
         const tempResult = flag ? result : -result;
         if (tempResult > MAX_INT) {
