@@ -7,6 +7,7 @@ import React from 'react';
 import { MenuProps } from 'antd';
 import Schedule from './pages/Schedule';
 import OperationRecord from './pages/OperationRecord';
+import RdmSub from './pages/RdmSub';
 
 /**
  * 自定义接口类型
@@ -41,6 +42,13 @@ export const routerList: IRouteObject[] = [
                 path: 'operation-record',
                 element: <OperationRecord />,
                 label: '操作记录',
+                icon: <FileOutlined />,
+                menu: true,
+            },
+            {
+                path: 'ali-sub',
+                element: <RdmSub />,
+                label: '瑞德名',
                 icon: <FileOutlined />,
                 menu: true,
             },

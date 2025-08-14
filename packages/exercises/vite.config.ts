@@ -4,17 +4,26 @@ import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src')
+    plugins: [react()],
+    resolve: {
+        alias: {
+            '@': resolve(__dirname, './src')
+        }
+    },
+    server: {
+        port: 3000,
+        proxy: {
+            '/api': {
+                target: 'https://mock.com',
+                changeOrigin: true,
+                secure: false,
+                rewrite: (path) => path.replace(/^\/api/, '')
+            }
+        }
+        
+    },
+    build: {
+        outDir: 'dist',
+        sourcemap: true
     }
-  },
-  server: {
-    port: 3000
-  },
-  build: {
-    outDir: 'dist',
-    sourcemap: true
-  }
 }); 
