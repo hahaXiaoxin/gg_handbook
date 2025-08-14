@@ -61,6 +61,7 @@ function fourSum(nums: number[], target: number): number[][] {
     return result;
 }
 
+// @ts-ignore
 function twoSum(nums: number[], target: number): number[][] {
     const result: Array<[number, number]> = [];
 
