@@ -8,6 +8,7 @@ import { MenuProps } from 'antd';
 import Schedule from './pages/Schedule';
 import OperationRecord from './pages/OperationRecord';
 import RdmSub from './pages/RdmSub';
+import AliSub from './pages/AliSub';
 
 /**
  * 自定义接口类型
@@ -46,9 +47,16 @@ export const routerList: IRouteObject[] = [
                 menu: true,
             },
             {
-                path: 'ali-sub',
+                path: 'rdm-sub',
                 element: <RdmSub />,
                 label: '瑞德名',
+                icon: <FileOutlined />,
+                menu: true,
+            },
+            {
+                path: 'ali-sub',
+                element: <AliSub />,
+                label: '数字马力',
                 icon: <FileOutlined />,
                 menu: true,
             },
