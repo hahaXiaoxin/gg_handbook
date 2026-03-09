@@ -33,4 +33,7 @@ pnpm-debug.log*
 
 # System
 .DS_Store
-Thumbs.db 
+Thumbs.db
+
+.temp_cache
+dll
