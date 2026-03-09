@@ -5,6 +5,7 @@ module.exports = {
       2,
       'always',
       [
+        'merge',    // 合并
         'feat',     // 新功能
         'fix',      // 修复
         'docs',     // 文档变更
@@ -15,7 +16,8 @@ module.exports = {
         'chore',    // 构建过程或辅助工具的变动
         'revert',   // 回退
         'build',    // 打包
-        'ci'        // CI 配置相关
+        'ci',        // CI 配置相关
+        'remove',    // 移除
       ]
     ],
     'type-case': [0],

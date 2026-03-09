@@ -20,5 +20,8 @@
     "@commitlint/config-conventional": "^19.8.0",
     "husky": "^9.1.7",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@gg-handbook/gg_cli": "link:packages/gg_cli"
   }
 }
